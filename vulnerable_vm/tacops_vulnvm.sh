@@ -75,7 +75,7 @@ level6() {
     tar -czf /tmp/flag.tar.gz /tmp/flag.txt
     tar -cjf /tmp/flag.tar.gz.bz2 /tmp/flag.tar.gz
     zip /tmp/flag.tar.gz.bz2.zip /tmp/flag.tar.gz.bz2
-    7z /home/level6/flag.tar.gz.bz2.zip.7z /tmp/flag.tar.gz.bz2.zip
+    7z a /home/level6/flag.tar.gz.bz2.zip.7z /tmp/flag.tar.gz.bz2.zip
 
     chmod -R ug=r /home/level6
     chmod ug=rx /home/level6
