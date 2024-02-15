@@ -1,0 +1,16 @@
+1: This is a PCAP showing an infected device communicating with a malware Command-and-Control (C2) server. IMPORTANT NOTE: This is a real-world traffic sample containing REAL malware URLs. DO NOT VISIT any of the URLs on your device. What type of malware infection is this?
+A: Ursnif
+
+2: Executable files in Windows often contain the string "This program cannot be run in DOS mode." Use this knowledge to search for a Windows executable in the PCAP - what is the full URL that this file was downloaded from? 
+A: http://ritalislum.com/obedle/zarref.php?l=sopopf8.cab
+
+3: After the Windows executable was downloaded, the infected device reached out to various domains with GET requests. Which domain returned a 200 OK response for these GET requests?
+A: k55gaisi.com
+
+4: Further malware was dropped onto the host in the form of a .rar file. What is the filename?
+A: uaasdqweeeeqsd.rar
+
+5: After the rar was downloaded, some unusual TLS traffic was observed. What IP addresses were used for this?
+A: 185.99.133.38, 5.61.34.51
+
+

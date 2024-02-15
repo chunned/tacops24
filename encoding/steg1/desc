@@ -1,0 +1,5 @@
+Flag: tacops{tr1th3m1u$}
+
+Desc:
+
+The flag has been hidden in the image using steganography. To keep it easy, we've used an empty password. Can you recover the flag?

@@ -1,0 +1,4 @@
+Flag: tacops{k3rckh0ff}
+
+Desc:
+This time, the flag is hidden in the same method as the previous challenge, but using a passphrase. The passphrase used was some combination of the characters "netsoc" (all lower-case). Generate a wordlist with all possible combinations of these characters and crack the passphrase to retrieve the flag. 

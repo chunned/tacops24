@@ -1,0 +1,12 @@
+1
+I have a friend named Lee T. Hacker. He thinks he's a skilled big shot hacker but I'm not so sure. Can you find his Instagram account? Flag is tacops{<account name>}
+Flag: tacops{lee.t.hacker}
+
+
+2
+Hmm...looks like our friend Lee posted a picture of a GitHub repository on his Instagram. I wonder if we can find out some more useful info from this account. What group does Lee claim to work for?
+Flag: tacops{APT1}
+
+3
+What is Lee's password?
+Flag: LeesEpicPasswordThatIsVerySecure
