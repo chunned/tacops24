@@ -99,6 +99,9 @@ level8() {
     useradd -m -s /bin/bash -u 8888 -g 8888 level8
     echo 'level8:d1ff3rEnc3s' | chpasswd
 
+    echo "3xtend0" > /home/level8/flag.pcap
+    printf '\xd4\xc3\xb2\xa1' | dd conv=notrunc of=/home/level8/flag.pcap bs=1 seek=0
+
     # make this level the 'totally-real-program.exe' level (use `find` to discover the file type)
     # (thinking about it now though, they won't have a way to view the QR code, so gonna have to use a different file)
     # make next level the grep challenge - out.txt too big for github so just recreate file in the script
@@ -111,7 +114,6 @@ level9() {
     echo 'level9:3xtend0' | chpasswd 
 
     curl -o /home/level9/out.txt https://file.io/zO2L6xJoXqSj
-
     chmod -R ug=rx /home/level8
 }
 
