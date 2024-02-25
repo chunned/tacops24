@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo -s
+sudo -s && cd ~
 apt update
 
 # Create SSH login banner
