@@ -8,9 +8,9 @@ sed '110s//Banner /etc/ssh/banner.txt/'
 systemctl restart sshd
 
 # WireGuard setup
-curl -o /tmp/wg_setup.sh https://gist.github.com/chunned/5758e0bb9f1e4e790105f1e1ffe3ae89
-chmod +x /tmp/wg_setup.sh
-/tmp/wg_setup.sh
+curl -o ~/wg_setup.sh https://gist.github.com/chunned/5758e0bb9f1e4e790105f1e1ffe3ae89
+chmod +x ~/wg_setup.sh
+~/wg_setup.sh
 
 level1() {
     groupadd -g 1111 level1
