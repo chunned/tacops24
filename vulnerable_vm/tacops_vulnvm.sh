@@ -3,12 +3,12 @@ sudo -s
 apt update
 
 # Create SSH login banner
-curl -o /etc/ssh/banner.txt https://gist.github.com/chunned/75f30eaebe11f049d758c7227f63d00d
+curl -o /etc/ssh/banner.txt https://gist.githubusercontent.com/chunned/75f30eaebe11f049d758c7227f63d00d/raw/01b2ff6e24f477d5bd1825c4ac1e846de60b7402/banner.txt
 sed '110s//Banner /etc/ssh/banner.txt/'
 systemctl restart sshd
 
 # WireGuard setup
-curl -o ~/wg_setup.sh https://gist.github.com/chunned/5758e0bb9f1e4e790105f1e1ffe3ae89
+curl -o ~/wg_setup.sh https://gist.githubusercontent.com/chunned/5758e0bb9f1e4e790105f1e1ffe3ae89/raw/a025ee3654cb8fa2bac7e697e257ceafae8e35ba/wg_setup.sh
 chmod +x ~/wg_setup.sh
 ~/wg_setup.sh
 
