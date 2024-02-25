@@ -24,7 +24,7 @@ for i in {1..254}; do
 	privkey=$(wg genkey)
     pubkey=$(echo "$privkey" | wg pubkey)
     address="10.8.0.$i/32"
-    clientfile="client$i.conf"
+    clientfile="~/clients/client$i.conf"
     echo "[Interface]" > $clientfile
     echo "PrivateKey = $privkey" >> $clientfile
     echo "Address = $address" >> $clientfile
@@ -42,3 +42,4 @@ done
 
 sudo cp wg.conf /etc/wireguard/wg.conf
 sudo wg-quick up wg
+sudo rm wg.conf
