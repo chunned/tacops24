@@ -1,5 +1,11 @@
 #!/bin/bash
+sudo -s
 apt update
+
+# Create SSH login banner
+curl -o /etc/ssh/banner.txt https://gist.github.com/chunned/75f30eaebe11f049d758c7227f63d00d
+sed '110s//Banner /etc/ssh/banner.txt/'
+systemctl restart sshd
 
 level1() {
     groupadd -g 1111 level1
@@ -122,7 +128,7 @@ level10() {
     groupadd -g 1100 level10
     useradd -m -s /bin/bash -u 1110 -g 1110 level11
     useradd -m -s /bin/bash -u 1100 -g 1100 level10
-    echo 'level11:' | chpasswd
+    echo 'level10:grepwillsaveyou' | chpasswd
 
     apt install -y vim
     cp $(which vim) /home/level10/vim

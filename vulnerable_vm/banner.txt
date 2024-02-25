@@ -1,0 +1,34 @@
+__        _______ _     ____ ___  __  __ _____ 
+\ \      / / ____| |   / ___/ _ \|  \/  | ____|
+ \ \ /\ / /|  _| | |  | |  | | | | |\/| |  _|  
+  \ V  V / | |___| |__| |__| |_| | |  | | |___ 
+   \_/\_/  |_____|_____\____\___/|_|  |_|_____|
+                                               
+                   _            
+                  | |_ ___      
+                  | __/ _ \     
+                  | || (_) |    
+                   \__\___/     
+                                
+        _____  _    ____ ___  ____  ____  
+       |_   _|/ \  / ___/ _ \|  _ \/ ___| 
+         | | / _ \| |  | | | | |_) \___ \ 
+         | |/ ___ \ |__| |_| |  __/ ___) |
+         |_/_/   \_\____\___/|_|   |____/ 
+
+-----------------------------------------------------
+Greetings from the executives of Netsoc! Thank you
+for participating in Tacops 2024. 
+
+INSTRUCTIONS:
+- Each level's flag is the password for the next level.
+
+- Use "su <name>" to log into the next level - i.e.                                         
+  once you find the level 1 flag, do "su level2" and
+  use the flag as the pasword
+
+- To prevent users from messing with each other, 
+  write access to home directories is denied. We 
+  suggest using the command "mktemp -d" to create a
+  random temporary directory and doing all your work
+  in there. 
