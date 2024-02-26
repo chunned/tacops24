@@ -1,21 +1,37 @@
 #!/bin/bash
-sudo -s && cd ~
+# RUN SCRIPT AS ROOT, IN ROOT HOME DIR
 apt update
 
-# Create SSH login banner
-curl -o /etc/ssh/banner.txt https://gist.githubusercontent.com/chunned/75f30eaebe11f049d758c7227f63d00d/raw/01b2ff6e24f477d5bd1825c4ac1e846de60b7402/banner.txt
-sed '110s//Banner /etc/ssh/banner.txt/'
-systemctl restart sshd
+ssh() {
+    # Create SSH login banner
+    curl -o /etc/ssh/banner.txt https://gist.githubusercontent.com/chunned/75f30eaebe11f049d758c7227f63d00d/raw/01b2ff6e24f477d5bd1825c4ac1e846de60b7402/banner.txt
+    sed '110s#.*#Banner /etc/ssh/banner.txt#' /etc/ssh/sshd_config > sshd
+    # Enable password SSH login for users on VPN network
+    echo "Match Address 10.8.0.0/24" >> sshd
+    echo "    PasswordAuthentication yes" >> sshd
+    mv sshd /etc/ssh/sshd_config
 
-# WireGuard setup
-curl -o ~/wg_setup.sh https://gist.githubusercontent.com/chunned/5758e0bb9f1e4e790105f1e1ffe3ae89/raw/a025ee3654cb8fa2bac7e697e257ceafae8e35ba/wg_setup.sh
-chmod +x ~/wg_setup.sh
-~/wg_setup.sh
+    systemctl restart sshd
+
+    # to disable AWS banner do touch ~/.hushlogin -needs to be done on all accounts
+    touch /root/.hushlogin
+    touch /home/ubuntu/.hushlogin 
+}
+
+wireguard() {
+    # WireGuard setup
+    curl -o ~/wg_setup.sh https://gist.githubusercontent.com/chunned/5758e0bb9f1e4e790105f1e1ffe3ae89/raw/a025ee3654cb8fa2bac7e697e257ceafae8e35ba/wg_setup.sh
+    mkdir ~/clients/
+    chmod +x ~/wg_setup.sh
+    ~/wg_setup.sh
+}
 
 level1() {
     groupadd -g 1111 level1
     useradd -m -s /bin/bash -u 1111 -g 1111 level1
     echo 'level1:Sizzle-Resend-Scarecrow' | chpasswd 
+    touch /home/level1/.hushlogin
+
     echo 'th1s_fe3ls_fam1li4r' > /home/level1/.flag
     chmod -R ug=r /home/level1
     chmod ug=rx /home/level1
@@ -28,10 +44,8 @@ level2() {
     cd /home/level2
     createABunchOfFiles
     echo "f1ndm3f1ndm3" > dir60/subdir40/file77.txt
-    
-    chmod -R ug=r /home/level2
-    chmod ug=rx /home/level2
-    chmod u=rx dir60/subdir40/file77.txt
+
+    chmod -R ug=rx /home/level2
 }
 level3() {
     groupadd -g 3333 level3
@@ -44,8 +58,7 @@ level3() {
     chown 123:321 dir25/subdir90/file4.txt
     echo "1d3nt1f13rs" > dir25/subdir90/file4.txt
 
-    chmod -R ug=r /home/level3
-    chmod ug=rx /home/level3
+    chmod -R ug=rx /home/level3
 }
 level4() {
     groupadd -g 4444 level4
@@ -109,23 +122,20 @@ level8() {
     groupadd -g 8888 level8
     useradd -m -s /bin/bash -u 8888 -g 8888 level8
     echo 'level8:d1ff3rEnc3s' | chpasswd
-
-    echo "3xtend0" > /home/level8/flag.pcap
+    echo "" > /home/level8/flag.pcap
+    echo "3xtend0" >> /home/level8/flag.pcap
     printf '\xd4\xc3\xb2\xa1' | dd conv=notrunc of=/home/level8/flag.pcap bs=1 seek=0
 
-    # make this level the 'totally-real-program.exe' level (use `find` to discover the file type)
-    # (thinking about it now though, they won't have a way to view the QR code, so gonna have to use a different file)
-    # make next level the grep challenge - out.txt too big for github so just recreate file in the script
     chmod -R ug=rx /home/level8
 
 }
 level9() {
-    groupadd -g 9999 level 9
+    groupadd -g 9999 level9
     useradd -m -s /bin/bash -u 9999 -g 9999 level9
     echo 'level9:3xtend0' | chpasswd 
 
     curl -o /home/level9/out.txt https://file.io/zO2L6xJoXqSj
-    chmod -R ug=rx /home/level8
+    chmod -R ug=rx /home/level9
 }
 
 level10() {
@@ -140,8 +150,8 @@ level10() {
 
     chown level11:level11 /home/level10/vim
     
-    chmod -R ugo=rx /home/level10
-    chmod ug=rx /home/level10 
+    chmod -R ug=rx /home/level10
+    chmod -R ug=rx /home/level11
     
     chmod u+s /home/level10/vim
 

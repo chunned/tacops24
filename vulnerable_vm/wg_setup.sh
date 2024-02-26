@@ -1,5 +1,7 @@
 #!/bin/bash
 # Basic WireGuard install + setup
+mkdir wg && cd wg
+mkdir clients
 sudo apt update && sudo apt install -y resolvconf wireguard
 ip link add dev wg0 type wireguard
 ip address add dev wg0 10.8.0.1/24
@@ -24,8 +26,9 @@ for i in {1..254}; do
 	privkey=$(wg genkey)
     pubkey=$(echo "$privkey" | wg pubkey)
     address="10.8.0.$i/32"
-    clientfile="~/clients/client$i.conf"
-    echo "[Interface]" > $clientfile
+    clientfile="clients/client$i.conf"
+    touch $clientfile
+    echo "[Interface]" >> $clientfile
     echo "PrivateKey = $privkey" >> $clientfile
     echo "Address = $address" >> $clientfile
     echo "DNS = 1.1.1.1, 1.0.0.1" >> $clientfile
