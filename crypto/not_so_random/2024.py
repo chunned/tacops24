@@ -1,3 +1,4 @@
+# Credit to TetCTF 2020, retrieved from CryptoHack.org
 import os
 import random
 
