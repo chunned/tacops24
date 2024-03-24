@@ -1,3 +1,4 @@
+# Note: final version that was seen in the actual challenge was slightly different. 
 #!/bin/bash
 # RUN SCRIPT AS ROOT, IN ROOT HOME DIR
 apt update
