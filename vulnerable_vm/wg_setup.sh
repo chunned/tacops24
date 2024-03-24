@@ -1,3 +1,4 @@
+# This script generates 200 unique WireGuard client config files and configures them as peers for the server.
 #!/bin/bash
 # Basic WireGuard install + setup
 mkdir wg && cd wg
